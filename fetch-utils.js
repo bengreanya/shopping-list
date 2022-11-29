@@ -37,5 +37,32 @@ export async function createListItem(item, quantity) {
     const response = await client
         .from('shopping-list')
         .insert({ item: item, quantity: quantity, user_id: client.auth.user().id });
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
 }
 /* Data functions */
+export async function getListItems() {
+    const response = await client
+        .from('shopping-list')
+        .select('*')
+        .match({ user_id: client.auth.user().id });
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
+}
+export async function editListItem(item) {
+    const response = await client
+        .from('shopping-list')
+        .update({ cross_out: !item.cross_out })
+        .match({ id: item.id });
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
+}
