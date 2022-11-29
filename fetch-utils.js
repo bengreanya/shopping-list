@@ -66,4 +66,11 @@ export async function editListItem(item) {
         return response.data;
     }
 }
-export async function deleteList() {}
+export async function deleteList() {
+    const response = await client.from('shopping-list').delete().match({ user_id: getUser().id });
+    if (response.error) {
+        console.error(response.message);
+    } else {
+        return response.data;
+    }
+}

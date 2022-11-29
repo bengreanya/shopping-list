@@ -6,6 +6,7 @@ import { createListItem } from './fetch-utils.js';
 import { getListItems } from './fetch-utils.js';
 import { editListItem } from './fetch-utils.js';
 import { renderListItem } from './render-utils.js';
+import { deleteList } from './fetch-utils.js';
 /* Get DOM Elements */
 const form = document.querySelector('.item-form');
 const listEl = document.querySelector('.list');
@@ -52,5 +53,6 @@ async function fetchAndDisplayList() {
     }
 }
 deleteButton.addEventListener('click', async () => {
-    await delete
-})
+    await deleteList();
+    await fetchAndDisplayList();
+});
