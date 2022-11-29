@@ -33,5 +33,9 @@ export async function checkAuth() {
         location.replace('../');
     }
 }
-
+export async function createListItem(item, quantity) {
+    const response = await client
+        .from('shopping-list')
+        .insert({ item: item, quantity: quantity, user_id: client.auth.user().id });
+}
 /* Data functions */
