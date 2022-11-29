@@ -58,7 +58,7 @@ export async function getListItems() {
 export async function editListItem(item) {
     const response = await client
         .from('shopping-list')
-        .update({ cross_out: !item.cross_out })
+        .update({ got_it: !item.got_it })
         .match({ id: item.id });
     if (response.error) {
         console.error(response.error.message);
@@ -66,3 +66,4 @@ export async function editListItem(item) {
         return response.data;
     }
 }
+export async function deleteList() {}

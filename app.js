@@ -10,6 +10,7 @@ import { renderListItem } from './render-utils.js';
 const form = document.querySelector('.item-form');
 const listEl = document.querySelector('.list');
 const error = document.querySelector('#error');
+const deleteButton = document.querySelector('.delete');
 /* State */
 
 /* Events */
@@ -43,7 +44,13 @@ async function fetchAndDisplayList() {
                 await editListItem(item);
                 await fetchAndDisplayList();
             });
+            if (item.got_it) {
+                listItemEl.classList.add('got-it-true');
+            }
             listEl.append(listItemEl);
         }
     }
 }
+deleteButton.addEventListener('click', async () => {
+    await delete
+})
