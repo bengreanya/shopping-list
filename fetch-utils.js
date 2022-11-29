@@ -28,4 +28,10 @@ export async function signOutUser() {
     return await client.auth.signOut();
 }
 
+export async function checkAuth() {
+    if (getUser()) {
+        location.replace('../');
+    }
+}
+
 /* Data functions */
